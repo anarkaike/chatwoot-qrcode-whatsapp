@@ -8,6 +8,7 @@ import CloudWhatsapp from './CloudWhatsapp.vue';
 import WhatsappEmbeddedSignup from './WhatsappEmbeddedSignup.vue';
 import ChannelSelector from 'dashboard/components/ChannelSelector.vue';
 import BaileysWhatsapp from './BaileysWhatsapp.vue';
+import ZapiWhatsapp from './ZapiWhatsapp.vue';
 
 const route = useRoute();
 const router = useRouter();
@@ -21,6 +22,7 @@ const PROVIDER_TYPES = {
   WHATSAPP_MANUAL: 'whatsapp_manual',
   THREE_SIXTY_DIALOG: '360dialog',
   BAILEYS: 'baileys',
+  ZAPI: 'zapi',
 };
 
 const hasWhatsappAppId = computed(() => {
@@ -54,6 +56,12 @@ const availableProviders = computed(() => [
     title: t('INBOX_MGMT.ADD.WHATSAPP.PROVIDERS.BAILEYS'),
     description: t('INBOX_MGMT.ADD.WHATSAPP.PROVIDERS.BAILEYS_DESC'),
     icon: 'i-woot-baileys',
+  },
+  {
+    key: PROVIDER_TYPES.ZAPI,
+    title: t('INBOX_MGMT.ADD.WHATSAPP.PROVIDERS.ZAPI'),
+    description: t('INBOX_MGMT.ADD.WHATSAPP.PROVIDERS.ZAPI_DESC'),
+    icon: 'i-woot-zapi',
   },
 ]);
 
@@ -152,6 +160,7 @@ const handleManualLinkClick = () => {
         <BaileysWhatsapp
           v-else-if="selectedProvider === PROVIDER_TYPES.BAILEYS"
         />
+        <ZapiWhatsapp v-else-if="selectedProvider === PROVIDER_TYPES.ZAPI" />
       </div>
     </div>
   </div>
