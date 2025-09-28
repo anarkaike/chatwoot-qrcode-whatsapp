@@ -1,5 +1,7 @@
 class Whatsapp::IncomingMessageZapiService < Whatsapp::IncomingMessageBaseService
   include Whatsapp::ZapiHandlers::ConnectedCallback
+  include Whatsapp::ZapiHandlers::DisconnectedCallback
+  include Whatsapp::ZapiHandlers::ReceivedCallback
 
   def perform
     return if processed_params[:type].blank?
